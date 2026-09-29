@@ -1,0 +1,17 @@
+# 待检测标签定义（ROS 2 版，对应原 ROS1 的 config/tags.yaml）
+#
+# 重要：ROS 2 的 apriltag_ros 不使用 ROS1 的 standalone_tags / tag_bundles，
+# 而是用 tag.ids / tag.frames / tag.sizes 三个等长列表：
+#   ROS1 standalone_tags:
+#     [{id:0,size:0.05},{id:1,size:0.04},{id:2,size:0.03}]
+#   ->
+#   ROS2 tag.ids: [0, 1, 2]
+#        tag.sizes: [0.05, 0.04, 0.03]
+#        tag.frames: [tag_0, tag_1, tag_2]   （可选，不写则默认 tag<family>:<id>）
+#
+/**:
+  ros__parameters:
+    tag:
+      ids: [0, 1, 2]
+      frames: [tag_0, tag_1, tag_2]
+      sizes: [0.05, 0.04, 0.03]

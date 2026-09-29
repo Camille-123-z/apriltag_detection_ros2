@@ -1,0 +1,35 @@
+# AprilTag 3 检测参数（ROS 2 版，对应原 ROS1 的 config/settings.yaml）
+# 参数说明见 https://github.com/christianrauch/apriltag_ros
+#
+# 注意：ROS 2 的 apriltag_ros 参数名与 ROS1 不同，对照如下：
+#   ROS1 tag_family: tag36h11      ->  ROS2 family: 36h11   （去掉 "tag" 前缀）
+#   ROS1 tag_threads               ->  ROS2 detector.threads
+#   ROS1 tag_decimate              ->  ROS2 detector.decimate
+#   ROS1 tag_blur                  ->  ROS2 detector.blur
+#   ROS1 tag_refine_edges          ->  ROS2 detector.refine   （bool）
+#   ROS1 tag_debug                 ->  ROS2 detector.debug    （bool）
+#   ROS1 max_hamming_dist          ->  ROS2 max_hamming
+#   ROS1 transport_hint            ->  ROS2 image_transport
+#
+# /** 表示"任意节点名"，这样无论节点叫什么都能加载本参数。
+/**:
+  ros__parameters:
+    # 标签家族（16h5 / 25h9 / 36h11 / Circle21h7 / Circle49h12 /
+    #          Custom48h12 / Standard41h12 / Standard52h13）
+    family: 36h11
+    # 默认标签边长（米），未在 tags.yaml 中单独指定的标签使用此值
+    size: 0.05
+    # 图像传输方式（raw / compressed）
+    image_transport: raw
+    # 最大汉明距离（2 较好，>=3 内存占用大）
+    max_hamming: 2
+    # 位姿估计方法（pnp / homography 等）
+    pose_estimation_method: pnp
+    # 检测器参数
+    detector:
+      threads: 2       # 原 tag_threads: 2
+      decimate: 1.0    # 原 tag_decimate: 1.0
+      blur: 0.0        # 原 tag_blur: 0.0
+      refine: true     # 原 tag_refine_edges: 1
+      sharpening: 0.25
+      debug: false     # 原 tag_debug: 0

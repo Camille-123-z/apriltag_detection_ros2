@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>apriltag_detection</name>
+  <version>0.0.0</version>
+  <description>ROS 2 launch/config wrapper for AprilTag detection (apriltag_ros). Ported from ROS 1 bingda-robot/apriltag_detection.</description>
+  <maintainer email="bingda@todo.todo">bingda</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- 运行时依赖：launch 文件里启动的节点所属包 -->
+  <exec_depend>apriltag_ros</exec_depend>
+  <exec_depend>usb_cam</exec_depend>
+  <exec_depend>image_proc</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
